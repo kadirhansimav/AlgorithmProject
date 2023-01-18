@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.util.List;
 import javax.swing.JPanel;
 
 /*
@@ -809,9 +810,10 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void solveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solveButtonActionPerformed
         CubeSolver solver = new CubeSolver();
-        String moves = solver.solve(cubicState);
-        
-        System.out.println(moves);
+        List<String> moves = solver.solveBFS(cubicState);
+        for(String move : moves){
+            System.out.println(move);
+        }
     }//GEN-LAST:event_solveButtonActionPerformed
 
     /**
