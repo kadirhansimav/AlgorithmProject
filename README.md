@@ -14,13 +14,16 @@ After that We use BFS algorithm solve the cube. <br>
 
 Because the 2x2x2 Cube has no center, the front surfaces may not be the same for the base state and the solved state. This brings more than one solution. Thus, when we look at the projection of the solved cube, we can see the variants where the colors are in different places.<br>
 
-<h1>How Can You Install And Run The Project<\h1>
+<h1>How Can You Install And Run The Project
+  
 - Clone the repository
 - You need the Java SDK 17
 - You can run this project any IDE (There isn't any dependency in there)
+- Also builded jar file in rubik/target named "rubik-1.0-SNAPSHOT.jar" 
+- You can run this project "java -jar rubik-1.0-SNAPSHOT.jar"
+  <br>
   
-  
-<h2>Javadoc Added<\h2>
+<h2>Javadoc Added
 
 
 
