@@ -18,6 +18,9 @@ Because the 2x2x2 Cube has no center, the front surfaces may not be the same for
 - Clone the repository
 - You need the Java SDK 17
 - You can run this project any IDE (There isn't any dependency in there)
+  
+  
+<h2>Javadoc Added<\h2>
 
 
 
