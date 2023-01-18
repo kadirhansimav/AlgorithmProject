@@ -3,7 +3,8 @@ In this project, we wrote an algorithm that solves a 2x2x2 rubik's cube.<br>
 We use java maven_17 and java swing for gui. <br>
 
 A cube is given in the photos below and each photo has 6 different faces of the cube, each face has a two possible moves. In total 12 different possible moves to solve cube. We determined the indexes of the probabilities that each face of the cube will rotate clockwise and counterclockwise.<br>
-After that We use BFS algorithm solve the cube.
+After that We use BFS algorithm solve the cube. <br>
+//base state ve solved state in frontları aynı olmayabilirir küpün merkezi olmaddğı için
 
 
 
