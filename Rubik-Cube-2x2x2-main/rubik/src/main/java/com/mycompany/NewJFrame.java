@@ -1,4 +1,7 @@
+package com.mycompany;
 
+
+import com.mycompany.CubicState;
 import java.awt.Color;
 import javax.swing.JPanel;
 
