@@ -1,3 +1,6 @@
+
+import java.util.HashMap;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -156,4 +159,33 @@ public class CubicState {
             System.out.println(rotations[random1]);
        }
     }
+    
+    public char[][] permApply(int[] perm){
+        char[][] newPositions = new char[6][4];
+        char[][] copyOfState = new char[6][4];
+        for (int i = 0; i < stateOfCubic.length; i++) {
+            System.arraycopy(stateOfCubic[i], 0, copyOfState[i], 0, stateOfCubic[i].length);
+            
+        }
+        for(int i=0;i<perm.length;i++){
+            newPositions[i/4][i%4] = copyOfState[perm[i]/4][perm[i]%4];
+        }
+        return newPositions;
+    }
+    public HashMap<String, CubicState> getReachableStates(){
+		HashMap<String, CubicState> moves = new HashMap<>();
+		addBasicMove("F'", F, moves);
+		addBasicMove("F", RF, moves);
+		addBasicMove("U'", U, moves);
+		addBasicMove("U", RU, moves);
+		addBasicMove("R'", R, moves);
+		addBasicMove("R", RR, moves);
+		return moves;
+	}
+    
+    private void addBasicMove(String name, int[] perm, HashMap<String, CubicState> moves) {
+		CubicState state = new CubicState(permApply(perm));
+		moves.put(name, state);
+	}
+    
 }

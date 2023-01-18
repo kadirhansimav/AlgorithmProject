@@ -420,6 +420,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
         solveButton.setText("Solve");
         solveButton.setBorder(new javax.swing.border.MatteBorder(null));
+        solveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                solveButtonActionPerformed(evt);
+            }
+        });
 
         rightButton.setText("Right");
         rightButton.addActionListener(new java.awt.event.ActionListener() {
@@ -801,6 +806,13 @@ public class NewJFrame extends javax.swing.JFrame {
                  changePanelColors();
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void solveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solveButtonActionPerformed
+        CubeSolver solver = new CubeSolver();
+        String moves = solver.solve(cubicState);
+        
+        System.out.println(moves);
+    }//GEN-LAST:event_solveButtonActionPerformed
 
     /**
      * @param args the command line arguments
