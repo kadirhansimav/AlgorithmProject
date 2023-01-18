@@ -1,4 +1,7 @@
+package com.mycompany;
 
+
+import com.mycompany.CubicState;
 import java.awt.Color;
 import java.util.List;
 import java.util.logging.Level;

@@ -1,3 +1,4 @@
+package com.mycompany;
 
 import java.util.ArrayList;
 import java.util.Arrays;

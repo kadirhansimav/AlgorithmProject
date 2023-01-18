@@ -1,3 +1,5 @@
+package com.mycompany;
+
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ public class CubeSolver {
 
     private final int DEPTH = 14;
 
-    static List<String> traceSteps(CubicState cs, Map<CubicState, CubicState> graph) {
+    List<String> traceSteps(CubicState cs, Map<CubicState, CubicState> graph) {
         List<String> steps = new ArrayList<>();
         while (cs != null) {
             steps.add(moves[cs.lastMove]);
