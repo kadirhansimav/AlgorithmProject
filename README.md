@@ -1,10 +1,24 @@
 # AlgorithmProject
+
+Baran Sönmez 1905011157 
+Batuhan Şahin 19050111051
+Emre Özer 19050111053
+Kadirhan Simav 19050111029
+Tolga Şükrü Özkan 19050111031
+
 In this project, we wrote an algorithm that solves a 2x2x2 rubik's cube.<br>
 We use java maven_17 and java swing for gui. <br>
 
 A cube is given in the photos below and each photo has 6 different faces of the cube, each face has a two possible moves. In total 12 different possible moves to solve cube. We determined the indexes of the probabilities that each face of the cube will rotate clockwise and counterclockwise.<br>
 After that We use BFS algorithm solve the cube. <br>
-//base state ve solved state in frontları aynı olmayabilirir küpün merkezi olmaddğı için
+
+Because the 2x2x2 Cube has no center, the front surfaces may not be the same for the base state and the solved state. This brings more than one solution. Thus, when we look at the projection of the solved cube, we can see the variants where the colors are in different places.<br>
+
+<h1>How Can You Install And Run The Project<\h1>
+- Clone the repository
+- You need the Java SDK 17
+- You can run this project any IDE (There isn't any dependency in there)
+
 
 
 
