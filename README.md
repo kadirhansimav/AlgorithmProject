@@ -1,10 +1,10 @@
 # AlgorithmProject
 
-Baran Sönmez 1905011157 
-Batuhan Şahin 19050111051
-Emre Özer 19050111053
-Kadirhan Simav 19050111029
-Tolga Şükrü Özkan 19050111031
+Baran Sönmez 1905011157 <br>
+Batuhan Şahin 19050111051 <br>
+Emre Özer 19050111053 <br>
+Kadirhan Simav 19050111029 <br>
+Tolga Şükrü Özkan 19050111031 <br>
 
 In this project, we wrote an algorithm that solves a 2x2x2 rubik's cube.<br>
 We use java maven_17 and java swing for gui. <br>
