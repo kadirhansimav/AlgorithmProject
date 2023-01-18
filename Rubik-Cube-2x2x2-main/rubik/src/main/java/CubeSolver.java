@@ -18,7 +18,7 @@ import java.util.Queue;
  */
 public class CubeSolver {
 
-    static final String moves[] = new String[] { "R", "RR", "U", "UU", "F", "FF" };
+    static final String moves[] = new String[] { "R", "R'", "U", "U'", "F", "F'" };;
     //public ArrayList<String> moves = new ArrayList<>();
 
     private final int DEPTH = 14;

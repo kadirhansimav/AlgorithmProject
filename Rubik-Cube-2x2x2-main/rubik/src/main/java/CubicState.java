@@ -22,12 +22,12 @@ public class CubicState {
 
     List<CubicState> neighbours() {
         List<CubicState> neigh = new ArrayList<>();
-        neigh.add(new CubicState(permApply(F)));
-        neigh.add(new CubicState(permApply(RF)));
-        neigh.add(new CubicState(permApply(R)));
-        neigh.add(new CubicState(permApply(RR)));
-        neigh.add(new CubicState(permApply(U)));
-        neigh.add(new CubicState(permApply(RU)));
+        neigh.add(new CubicState(permApply(F),4));
+        neigh.add(new CubicState(permApply(RF),5));
+        neigh.add(new CubicState(permApply(R),0));
+        neigh.add(new CubicState(permApply(RR),1));
+        neigh.add(new CubicState(permApply(U),2));
+        neigh.add(new CubicState(permApply(RU),3));
         
         return neigh;
     }
@@ -36,10 +36,13 @@ public class CubicState {
         this.isNullState = state;
     }
 
+    public CubicState(char[][] state, int lastMove){
+        this.stateOfCubic = state;
+        this.lastMove = lastMove;
+    }
     public CubicState(char[][] state) {
         this.stateOfCubic = state;
         this.isNullState = false;
-        this.lastMove = 0;
     }
 
     public CubicState() {
