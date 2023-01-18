@@ -3,6 +3,7 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -18,7 +19,8 @@ import java.util.Queue;
  */
 public class CubeSolver {
 
-    static final String moves[] = new String[] { "R", "R'", "U", "U'", "F", "F'" };;
+    static final String moves[] = new String[]{"R", "RR", "U", "RU", "F", "RF","L","RL","D","RD"};
+    ;
     //public ArrayList<String> moves = new ArrayList<>();
 
     private final int DEPTH = 14;
@@ -36,12 +38,38 @@ public class CubeSolver {
 
     public List<String> solveBFS(CubicState state) {
         Map<CubicState, CubicState> prev = new HashMap<>();
-        Queue<CubicState> q = new ArrayDeque<>();
+        Queue<CubicState> q = new LinkedList<>();
+        int i = 0;
+        q.add(state);
+        prev.put(state, null);
+
+        while (!q.isEmpty()) {
+            CubicState curr = q.remove();
+
+            if (checkSolved(curr)) {
+                System.out.println("Solved");
+                return traceSteps(curr, prev);
+            }
+            for (CubicState neigh : curr.neighbours()) {
+                if (!prev.containsKey(neigh)) {
+                    prev.put(neigh, curr);
+                    q.add(neigh);
+                }
+            }
+        }
+        return null;
+    }
+
+    public List<String> solveBFSs(CubicState state) {
+        Map<CubicState, CubicState> prev = new HashMap<>();
+        Queue<CubicState> q = new LinkedList<>();
+        int i = 0;
         q.add(state);
         prev.put(state, null);
 
         while (!q.isEmpty()) {
             CubicState curr = q.poll();
+
             if (checkSolved(curr)) {
                 System.out.println("Solved");
                 return traceSteps(curr, prev);
@@ -76,7 +104,6 @@ public class CubeSolver {
         int graphRadius = DEPTH / 2;
 
         for (int i = 0; i <= graphRadius; i++) {
-            System.out.println(i);
             while (true) {
                 end = fqueue.remove();
                 if (end.isNullState) {
@@ -174,7 +201,15 @@ public class CubeSolver {
 
     public boolean checkSolved(CubicState state) {
         CubicState solved = new CubicState();
-
+        //System.out.println("here");
+      
+        /*for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 4; j++) {
+             //   System.out.print((solved.stateOfCubic[i][j]) + " ");
+            }
+        }
+        System.out.println("");
+*/
         if (solved.equals(state)) {
             return true;
         }

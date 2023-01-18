@@ -28,6 +28,10 @@ public class CubicState {
         neigh.add(new CubicState(permApply(RR),1));
         neigh.add(new CubicState(permApply(U),2));
         neigh.add(new CubicState(permApply(RU),3));
+        neigh.add(new CubicState(permApply(L),6));
+        neigh.add(new CubicState(permApply(RL),7));
+        neigh.add(new CubicState(permApply(D),8));
+        neigh.add(new CubicState(permApply(RD),9));
         
         return neigh;
     }
@@ -178,13 +182,11 @@ public class CubicState {
     }
 
     public void shuffle() {
-        long random = Math.round(Math.random() * 100) % 25 + 1;
-        System.out.println(random);
+        long random = Math.round(Math.random() * 100) % 10 + 1;
         String[] rotations = {"F", "RF", "R", "RR", "L", "RL", "U", "RU", "B", "RB", "D", "RD"};
         for (int i = 0; i < random; i++) {
             int random1 = (int) (Math.round(Math.random() * 100) % 12);
             rotate(rotations[random1]);
-            System.out.println(rotations[random1]);
         }
     }
 
@@ -198,11 +200,11 @@ public class CubicState {
 
     public HashMap<String, CubicState> getReachableStates() {
         HashMap<String, CubicState> moves = new HashMap<>();
-        addBasicMove("F'", F, moves);
+        addBasicMove("RF", F, moves);
         addBasicMove("F", RF, moves);
-        addBasicMove("U'", U, moves);
+        addBasicMove("RU", U, moves);
         addBasicMove("U", RU, moves);
-        addBasicMove("R'", R, moves);
+        addBasicMove("RR", R, moves);
         addBasicMove("R", RR, moves);
         return moves;
     }
