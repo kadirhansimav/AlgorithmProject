@@ -20,7 +20,10 @@ public class CubicState {
     char[][] stateOfCubic;
     boolean isNullState;
     int lastMove;
-
+/**
+ * this function created for bfs algorithm we just find the states neighbours
+ * @return neigbours
+ */
     List<CubicState> neighbours() {
         List<CubicState> neigh = new ArrayList<>();
         neigh.add(new CubicState(permApply(F),4));
@@ -36,20 +39,33 @@ public class CubicState {
         
         return neigh;
     }
-
+/**
+ * constructor with state
+ * @param state is state null
+ */
     public CubicState(boolean state) {
         this.isNullState = state;
     }
-
+/**
+ * constructor with state and last move
+ * @param state current cubic state
+ * @param lastMove last move 
+ */
     public CubicState(char[][] state, int lastMove){
         this.stateOfCubic = state;
         this.lastMove = lastMove;
     }
+    /**
+     * constructor with given state
+     * @param state prepared state
+     */
     public CubicState(char[][] state) {
         this.stateOfCubic = state;
         this.isNullState = false;
     }
-
+/**
+ * default constructor
+ */
     public CubicState() {
         stateOfCubic = new char[6][4];
         for (int i = 0; i < stateOfCubic.length; i++) {
@@ -78,6 +94,20 @@ public class CubicState {
         }
         this.isNullState = false;
     }
+    /*Moves 
+    *F = front
+    *RF = counterclockwise front
+    *R = right
+    *RR = counterclockwise right
+    *L = left
+    *RL = counterclockwise left
+    *D = down
+    *RD = counterclockwise down
+    *B = back
+    *RB = counterclockwise back
+    *U = Up
+    *RU = counterclockwise up
+    */
     private int[] F = {0, 1, 19, 17, 6, 4, 7, 5, 22, 20, 10, 11, 12, 13, 14, 15, 16, 8, 18, 9, 2, 21, 3, 23};
     private int[] RF = {0, 1, 20, 22, 5, 7, 4, 6, 17, 19, 10, 11, 12, 13, 14, 15, 16, 3, 18, 2, 9, 21, 8, 23};
     private int[] R = {0, 5, 2, 7, 4, 9, 6, 11, 8, 13, 10, 15, 12, 1, 14, 3, 16, 17, 18, 19, 22, 20, 23, 21};
@@ -91,6 +121,10 @@ public class CubicState {
     private int[] U = {2, 0, 3, 1, 20, 21, 6, 7, 8, 9, 10, 11, 12, 13, 17, 16, 4, 5, 18, 19, 15, 14, 22, 23};
     private int[] RU = {1, 3, 0, 2, 16, 17, 6, 7, 8, 9, 10, 11, 12, 13, 21, 20, 15, 14, 18, 19, 4, 5, 22, 23};
 
+    /**
+     * rotate the cube function
+     * @param rotateDirection rotating direction
+     */
     public void rotate(String rotateDirection) {
         char[][] copyOfState = new char[6][4];
         for (int i = 0; i < stateOfCubic.length; i++) {
@@ -182,15 +216,11 @@ public class CubicState {
         }
     }
 
-    public void shuffle() {
-        long random = Math.round(Math.random() * 100) % 10 + 1;
-        String[] rotations = {"F", "RF", "R", "RR", "L", "RL", "U", "RU", "B", "RB", "D", "RD"};
-        for (int i = 0; i < random; i++) {
-            int random1 = (int) (Math.round(Math.random() * 100) % 12);
-            rotate(rotations[random1]);
-        }
-    }
-
+ /**
+  * rotating cube function 
+  * @param perm moves 
+  * @return new position
+  */
     public char[][] permApply(int[] perm) {
         char[][] newPositions = new char[6][4];
         for (int i = 0; i < perm.length; i++) {
@@ -199,22 +229,8 @@ public class CubicState {
         return newPositions;
     }
 
-    public HashMap<String, CubicState> getReachableStates() {
-        HashMap<String, CubicState> moves = new HashMap<>();
-        addBasicMove("RF", F, moves);
-        addBasicMove("F", RF, moves);
-        addBasicMove("RU", U, moves);
-        addBasicMove("U", RU, moves);
-        addBasicMove("RR", R, moves);
-        addBasicMove("R", RR, moves);
-        return moves;
-    }
-
-    private void addBasicMove(String name, int[] perm, HashMap<String, CubicState> moves) {
-        CubicState state = new CubicState(permApply(perm));
-        moves.put(name, state);
-    }
-
+   
+   
     @Override
     public int hashCode() {
         return java.util.Arrays.deepHashCode( stateOfCubic );
